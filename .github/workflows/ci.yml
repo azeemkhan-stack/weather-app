@@ -20,11 +20,12 @@ jobs:
 
       - name: Check JavaScript syntax
         run: |
-          node --check js/api.js
-          node --check js/app.js
-          node --check js/config.js
-          node --check js/helpers.js
-          node --check js/ui.js
+          for f in js/*.js; do cp "$f" "${f%.js}.mjs"; done
+          node --check js/api.mjs
+          node --check js/app.mjs
+          node --check js/config.mjs
+          node --check js/helpers.mjs
+          node --check js/ui.mjs
 
       - name: Check HTML structure
         run: |
