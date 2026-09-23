@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check JavaScript syntax
+        run: |
+          node --check js/api.js
+          node --check js/app.js
+          node --check js/config.js
+          node --check js/helpers.js
+          node --check js/ui.js
+
+      - name: Check HTML structure
+        run: |
+          test -f index.html
+          grep -q "</html>" index.html
+
+      - name: Check project folders
+        run: |
+          test -d js
+          test -d css
