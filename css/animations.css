@@ -1,0 +1,67 @@
+/* ==========================================================================
+   ANIMATIONS & SKELETON LOADERS
+   ========================================================================== */
+
+/* Fade Transitions */
+.hidden {
+  display: none !important;
+}
+
+.fade-in {
+  animation: fadeIn 0.35s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Skeleton Loading Animation */
+.skeleton-card {
+  background: linear-gradient(
+    90deg,
+    var(--bg-card) 25%,
+    var(--bg-card-hover) 50%,
+    var(--bg-card) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonPulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-hero {
+  min-height: 280px;
+}
+
+.skeleton-timeline {
+  min-height: 140px;
+}
+
+@keyframes skeletonPulse {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Dynamic Sun/Moon Toggle Icon Control */
+[data-theme="light"] .moon-icon {
+  display: block;
+}
+[data-theme="light"] .sun-icon {
+  display: none;
+}
+
+[data-theme="dark"] .moon-icon {
+  display: none;
+}
+[data-theme="dark"] .sun-icon {
+  display: block;
+}
